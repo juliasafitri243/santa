@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pojok Buku Cerita</title>
+    <style>
+        :root {
+            --primary: #5c67f2;
+            --secondary: #eef2ff;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light);
+            color: var(--dark);
+        }
+
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        header p {
+            margin: 0.5rem 0 0 0;
+            opacity: 0.9;
+        }
+
+        .search-container {
+            max-width: 500px;
+            margin: -20px auto 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 12px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 25px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem 5rem 1rem;
+        }
+
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .book-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+        }
+
+        /* Placeholder untuk cover buku jika belum ada gambar */
+        .book-cover {
+            height: 200px;
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .book-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-category {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .book-title {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.25rem;
+        }
+
+        .book-snippet {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .read-btn {
+            margin-top: auto;
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .read-btn:hover {
+            background-color: #4338ca;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: var(--dark);
+            color: white;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Koleksi Buku Cerita</h1>
+        <p>Jelajahi dunia imajinasi tanpa batas</p>
+    </header>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-box" placeholder="Cari judul cerita atau kategori..." onkeyup="searchBooks()">
+    </div>
+
+    <main>
+        <div class="book-grid" id="bookGrid">
+            
+            <div class="book-card" data-title="misteri hutan pinus" data-category="petualangan">
+                <div class="book-cover">🌲</div>
+                <div class="book-info">
+                    <span class="book-category">Petualangan</span>
+                    <h2 class="book-title">Misteri Hutan Pinus</h2>
+                    <p class="book-snippet">Kisah tiga sahabat yang menemukan peta rahasia menuju pohon emas di tengah hutan terlarang...</p>
+                    <a href="#" class="read-btn">Baca Sekarang</a>
+                </div>
+            </div>
+
+            <div class="book-card" data-title="si kancil dan bangau" data-category="fabel">
+                <div class="book-cover">🦊</div>
+                <div class="book-info">
+                    <span class="book-category">Fabel</span>
+                    <h2 class="book-title">Si Kancil dan Bangau</h2>
+                    <p class="book-snippet">Kecerdikan Kancil kali ini diuji ketika ia harus membantu Sahabat Bangau yang terjebak perangkap ikan...</p>
+                    <a href="#" class="read-btn">Baca Sekarang</a>
+                </div>
+            </div>
+
+            <div class="book-card" data-title="penjaga bintang malam" data-category="fantasi">
+                <div class="book-cover">✨</div>
+                <div class="book-info">
+                    <span class="book-category">Fantasi</span>
+                    <h2 class="book-title">Penjaga Bintang Malam</h2>
+                    <p class="book-snippet">Ketika bintang-bintang mulai padam, seorang anak lelaki biasa terpilih untuk menyalakan kembali lentera langit...</p>
+                    <a href="#" class="read-btn">Baca Sekarang</a>
+                </div>
+            </div>
+
+            <div class="book-card" data-title="legenda batu menangis" data-category="cerita rakyat">
+                <div class="book-cover">🗿</div>
+                <div class="book-info">
+                    <span class="book-category">Cerita Rakyat</span>
+                    <h2 class="book-title">Legenda Batu Menangis</h2>
+                    <p class="book-snippet">Kisah klasik tentang seorang anak yang durhaka kepada ibunya dan menerima konsekuensi dari perbuatannya...</p>
+                    <a href="#" class="read-btn">Baca Sekarang</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Sistem Informasi Buku Cerita digital.</p>
+    </footer>
+
+    <script>
+        // Fungsi Javascript untuk menyaring/mencari buku secara real-time
+        function searchBooks() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.getElementsByClassName('book-card');
+
+            for (let i = 0; i < cards.length; i++) {
+                let title = cards[i].getAttribute('data-title');
+                let category = cards[i].getAttribute('data-category');
+                
+                if (title.includes(input) || category.includes(input)) {
+                    cards[i].style.display = "flex";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
